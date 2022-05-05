@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/normalize.css">
+</head>
+<body>
+    <!-- Japan CLOCK  -->
+    <div class="clockSpace">
+      <h2 class="timeTitle">Japan Daylight Time</h2>
+      <div class="clock" id="JSTTime" data-timezone="JST">
+        <div class="clock-face">
+          <div class="hand hour-hand" data-hour-hand="JSTTime"></div>
+          <div class="hand min-hand" data-minutes-hand="JSTTime"></div>
+          <div class="hand second-hand" data-seconds-hand="JSTTime"></div>
+        </div>
+      </div>
+      <div class="digitalFormat" id="JSTDigitalFormat"><span class="digitalHours">Hours</span>:<span
+          class="digitalMinutes">Minutes</span>:<span class="digitalSeconds">Seconds</span>
+      </div>
+    </div>
+
+    <!-- Hawiian-Aleutian CLOCK  -->
+    <div class="clockSpace">
+      <h2 class="timeTitle">Hawiian-Aleutian Daylight Time</h2>
+      <div class="clock" id="HSTTime" data-timezone="HST">
+        <div class="clock-face">
+          <div class="hand hour-hand" data-hour-hand="HSTTime"></div>
+          <div class="hand min-hand" data-minutes-hand="HSTTime"></div>
+          <div class="hand second-hand" data-seconds-hand="HSTTime"></div>
+        </div>
+      </div>
+      <div class="digitalFormat" id="HSTDigitalFormat"><span class="digitalHours">Hours</span>:<span
+          class="digitalMinutes">Minutes</span>:<span class="digitalSeconds">Seconds</span>
+      </div>
+    </div>
+
+    <!-- ALASKA CLOCK -->
+    <div class="clockSpace">
+      <h2 class="timeTitle">Alaska Daylight Time</h2>
+      <div class="clock" id="AKDTTime" data-timezone="AKDT">
+        <div class="clock-face">
+          <div class="hand hour-hand" data-hour-hand="AKDTTime"></div>
+          <div class="hand min-hand" data-minutes-hand="AKDTTime"></div>
+          <div class="hand second-hand" data-seconds-hand="AKDTTime"></div>
+        </div>
+      </div>
+      <div class="digitalFormat" id="AKDTDigitalFormat"><span class="digitalHours">Hours</span>:<span
+          class="digitalMinutes">Minutes</span>:<span class="digitalSeconds">Seconds</span>
+      </div>
+    </div>
+
+    <!-- PST CLOCK -->
+    <div class="clockSpace">
+      <h2 class="timeTitle">Pacific Daylight Time</h2>
+      <div class="clock" id="PSTTime"  data-timezone="PST">
+        <div class="clock-face">
+          <div class="hand hour-hand" data-hour-hand="PSTTime"></div>
+          <div class="hand min-hand" data-minutes-hand="PSTTime"></div>
+          <div class="hand second-hand" data-seconds-hand="PSTTime"></div>
+        </div>
+      </div>
+      <div class="digitalFormat" id="PSTDigitalFormat">
+        <span class="digitalHours">Hours</span>:<span class="digitalMinutes">Minutes</span>:<span
+          class="digitalSeconds">Seconds</span>
+      </div>
+    </div>
+
+    <!-- MDT CLOCK -->
+    <div class="clockSpace">
+      <h2 class="timeTitle">Mountain Daylight Time</h2>
+      <div class="clock" id="MDTTime" data-timezone="MDT">
+        <div class="clock-face">
+          <div class="hand hour-hand" data-hour-hand="MDTTime"></div>
+          <div class="hand min-hand" data-minutes-hand="MDTTime"></div>
+          <div class="hand second-hand" data-seconds-hand="MDTTime"></div>
+        </div>
+      </div>
+      <div class="digitalFormat" id="MDTDigitalFormat">
+        <span class="digitalHours">Hours</span>:<span class="digitalMinutes">Minutes</span>:<span
+          class="digitalSeconds">Seconds</span>
+      </div>
+    </div>
+
+    <!-- EST CLOCK  -->
+    <div class="clockSpace">
+      <h2 class="timeTitle">Eastern Daylight Time</h2>
+      <div class="clock" id="ESTClock" data-timezone="EST">
+        <div class="clock-face">
+          <div class="hand hour-hand" data-hour-hand="ESTTime"></div>
+          <div class="hand min-hand" data-minutes-hand="ESTTime"></div>
+          <div class="hand second-hand" data-seconds-hand="ESTTime"></div>
+        </div>
+      </div>
+      <div class="digitalFormat" id="ESTDigitalFormat"><span class="digitalHours">Hours</span>:<span
+          class="digitalMinutes">Minutes</span>:<span class="digitalSeconds">Seconds</span>
+      </div>
+    </div>
+
+    <!-- UNIVERSAL CLOCK -->
+    <div class="clockSpace">
+      <h2 class="timeTitle">Universal Time</h2>
+      <div class="clock" id="UTCTime" data-timezone="UTC">
+        <div class="clock-face">
+          <div class="hand hour-hand" data-hour-hand="UTCTime"></div>
+          <div class="hand min-hand" data-minutes-hand="UTCTime"></div>
+          <div class="hand second-hand" data-seconds-hand="UTCTime"></div>
+        </div>
+      </div>
+      <div class="digitalFormat" id="UCTDigitalFormat"><span class="digitalHours">Hours</span>:<span
+          class="digitalMinutes">Minutes</span>:<span class="digitalSeconds">Seconds</span>
+      </div>
+    </div>
+
+    
+  <script src="js/main.js">
+  </script>
+</body>
+</html>

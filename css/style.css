@@ -1,0 +1,84 @@
+
+/* Box Model Hack */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+    background-size: cover;
+    font-family: 'helvetica neue';
+    /* text-align: center;
+    font-size: 10px; */
+}
+
+body {
+    /* margin: 0; */
+    display: flex;
+    flex-wrap: wrap;
+    /* min-height: 100vh; */
+    /* align-items: center; */
+    /* padding: 10px; */
+    color: white;
+}
+
+h2,
+span {
+    filter: drop-shadow(3px 3px 3px hsl(0, 0%, 15%));
+}
+
+.timeTitle {
+    font-size: 48px;
+}
+
+.digitalFormat {
+    font-size: 32px;
+}
+
+.clockSpace {
+    align-items: center;
+    margin: 30px;
+    text-align: center;
+    width: 100vw;
+}
+
+.clock {
+    position: 50%;
+    width: 20rem;
+    height: 20rem;
+    margin: 20px auto;
+    /* margin: 30px; */
+    display: block;
+    border: 17px solid white;
+    border-radius: 20%;
+    padding: 2rem;
+    box-shadow:
+        0 0 0 4px rgba(0, 0, 0, 5%),
+        inset 0 0 0 3px hsla(0, 0%, 0%, 15%),
+        inset 0 0 10px hsl(0, 0%, 15%),
+        0 0 10px rgba(0, 0, 0, 5%);
+}
+
+.clock-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 60px;
+    /* transform: translateY(-1px); */
+    /* account for the height of the clock hands */
+}
+
+.hand {
+    width: 50%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 50%;
+    /* change the origin of the transforms, like resetting the pivot */
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    /* creates a smooth transition as the time values change */
+    transition: all 0.05s;
+    /* gives the transition a slight ticking motion using a curve to determine its change in speed */
+    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
