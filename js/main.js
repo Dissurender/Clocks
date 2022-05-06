@@ -2,6 +2,8 @@ console.log("connected to javascript")
 
 const clocks = document.querySelectorAll('.clock');
 
+console.log(`Hello Diss`);
+
 
 function TimeZone(UTCoffset, clockType) {
     this.UTCoffset = UTCoffset;
