@@ -1,9 +1,8 @@
 console.log("connected to javascript");
 
 const clocks = document.querySelectorAll(".clock");
-const digitals = document.querySelectorAll("[data-digital]");
 
-let objects = {
+let timezonesObj = {
   JST: {
     abbr: "JST",
     offset: 9
@@ -35,9 +34,9 @@ let objects = {
 }
 
 // function constructor 
-function TimeZone(UTCoffset, clockType) {
+function TimeZone(UTCoffset, timezoneAbbrv) {
   this.UTCoffset = UTCoffset;
-  this.clockType = clockType;
+  this.timezoneAbbrv = timezoneAbbrv;
 
   // TIME VALUES
   this.date = new Date();
@@ -58,14 +57,13 @@ function TimeZone(UTCoffset, clockType) {
 
   // STYLING HANDS
   this.secondHand = document.querySelector(
-    `[data-seconds-hand="${clockType}Time"]`
+    `[data-seconds-hand="${timezoneAbbrv}Time"]`
   );
-
 
   this.minuteHand = document.querySelector(
-    `[data-minutes-hand="${clockType}Time"]`
+    `[data-minutes-hand="${timezoneAbbrv}Time"]`
   );
-  this.hourHand = document.querySelector(`[data-hour-hand="${clockType}Time"]`);
+  this.hourHand = document.querySelector(`[data-hour-hand="${timezoneAbbrv}Time"]`);
 
   this.getSecondsDegrees = function () {
     return (this.seconds / 60) * 360 + 90;
@@ -100,26 +98,30 @@ function TimeZone(UTCoffset, clockType) {
 }
 
 function setDate() {
+
+  // let digitalFormat;
+
+
   clocks.forEach((clock) => {
+    Object.keys(timezonesObj).forEach(timezone => {
+      const TIMEZONE_ABBR = timezonesObj[timezone].abbr;
+      const TIMEZONE_OFFSET = timezonesObj[timezone].offset;
 
-    Object.keys(objects).forEach(obj => {
-      const TIMEZONE_ABBR = objects[obj].abbr;
+      console.log(`obj`, timezone);
+      // console.log(`TIMEZONE_ABBR`, TIMEZONE_ABBR);
+      // console.log(`objects[obj].offset`, objects[obj].offset);
+      const newClock = new TimeZone(TIMEZONE_OFFSET, TIMEZONE_ABBR);
+      const DIGITAL_FORMAT = newClock.digitalFormat;
 
-
-      console.log(`obj`, obj);
-      console.log(`TIMEZONE_ABBR`, TIMEZONE_ABBR);
-      console.log(`objects[obj].offset`, objects[obj].offset);
-      const newClock = new TimeZone(objects[obj].offset, TIMEZONE_ABBR);
-
+      console.log(`newClock.digitalFormat`, DIGITAL_FORMAT);
       console.log(`newClock`, newClock);
 
-      digitals.forEach((digital) => {
-        const newDigital = 
-      })
+      // console.log(`digital`, digital);
+      document.querySelector(`.digitalFormat[data-${TIMEZONE_ABBR}]`).innerText = DIGITAL_FORMAT;
+      // console.log(`digitalFormat`, digitalFormat);
 
-      document.querySelector('[data-digital]').innerText =
-        newClock.digitalFormat;
-      console.log(`digitalFormat`, newClock.digitalFormat);
+      // document.querySelector('[data-digital]').innerText =
+      //   newClock.digitalFormat;
     })
 
     // for (const obj in objects) {
@@ -177,5 +179,5 @@ function setDate() {
   });
 }
 
-setDate();
-// setInterval(setDate, 1000);
+// setDate();
+setInterval(setDate, 1000);
