@@ -19,7 +19,7 @@ function TimeZone(UTCoffset, clockType) {
   // console.log(`timezone hours`, this.hours);
 
   if (this.hours > 23) {
-    this.hours -= 23;
+    this.hours = 0;
   }
 
   // DIGITAL FORMAT
