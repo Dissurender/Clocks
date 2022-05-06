@@ -1,9 +1,40 @@
 console.log("connected to javascript");
 
 const clocks = document.querySelectorAll(".clock");
+const digitals = document.querySelectorAll("[data-digital]");
 
-console.log(`Hello Diss`);
+let objects = {
+  JST: {
+    abbr: "JST",
+    offset: 9
+  },
+  HST: {
+    abbr: "HST",
+    offset: -10
+  },
+  AKDT: {
+    abbr: "AKDT",
+    offset: -8
+  },
+  PST: {
+    abbr: "PST",
+    offset: -7
+  },
+  MDT: {
+    abbr: "MDT",
+    offset: -6
+  },
+  EST: {
+    abbr: "EST",
+    offset: -5
+  },
+  UTC: {
+    abbr: "UTC",
+    offset: 0
+  }
+}
 
+// function constructor 
 function TimeZone(UTCoffset, clockType) {
   this.UTCoffset = UTCoffset;
   this.clockType = clockType;
@@ -19,7 +50,7 @@ function TimeZone(UTCoffset, clockType) {
   // console.log(`timezone hours`, this.hours);
 
   if (this.hours > 23) {
-    this.hours -= 23;
+    this.hours = 0;
   }
 
   // DIGITAL FORMAT
@@ -27,12 +58,14 @@ function TimeZone(UTCoffset, clockType) {
 
   // STYLING HANDS
   this.secondHand = document.querySelector(
-    `[data-seconds-hand="${clockType}"]`
+    `[data-seconds-hand="${clockType}Time"]`
   );
+
+
   this.minuteHand = document.querySelector(
-    `[data-minutes-hand="${clockType}"]`
+    `[data-minutes-hand="${clockType}Time"]`
   );
-  this.hourHand = document.querySelector(`[data-hour-hand="${clockType}"]`);
+  this.hourHand = document.querySelector(`[data-hour-hand="${clockType}Time"]`);
 
   this.getSecondsDegrees = function () {
     return (this.seconds / 60) * 360 + 90;
@@ -68,50 +101,81 @@ function TimeZone(UTCoffset, clockType) {
 
 function setDate() {
   clocks.forEach((clock) => {
-    // console.log(`clock is`, clock);
-    if (clock.dataset.timezone === "UTC") {
-      const UTCClock = new TimeZone(0, "UTCTime");
-      document.querySelector("#UCTDigitalFormat").innerText =
-        UTCClock.digitalFormat;
-    }
 
-    if (clock.dataset.timezone === "JST") {
-      const JSTClock = new TimeZone(9, "JSTTime");
-      console.log(JSTClock);
-      document.querySelector("#JSTDigitalFormat").innerText =
-        JSTClock.digitalFormat;
-    }
+    Object.keys(objects).forEach(obj => {
+      const TIMEZONE_ABBR = objects[obj].abbr;
 
-    if (clock.dataset.timezone === "EST") {
-      const ESTClock = new TimeZone(-5, "ESTTime");
-      document.querySelector("#ESTDigitalFormat").innerText =
-        ESTClock.digitalFormat;
-    }
 
-    if (clock.dataset.timezone === "HST") {
-      const HSTClock = new TimeZone(-10, "HSTTime");
-      document.querySelector("#HSTDigitalFormat").innerText =
-        HSTClock.digitalFormat;
-    }
+      console.log(`obj`, obj);
+      console.log(`TIMEZONE_ABBR`, TIMEZONE_ABBR);
+      console.log(`objects[obj].offset`, objects[obj].offset);
+      const newClock = new TimeZone(objects[obj].offset, TIMEZONE_ABBR);
 
-    if (clock.dataset.timezone === "AKDT") {
-      const AKDTClock = new TimeZone(-8, "AKDTTime");
-      document.querySelector("#AKDTDigitalFormat").innerText =
-        AKDTClock.digitalFormat;
-    }
+      console.log(`newClock`, newClock);
 
-    if (clock.dataset.timezone === "PST") {
-      const PSTClock = new TimeZone(-7, "PSTTime");
-      document.querySelector("#PSTDigitalFormat").innerText =
-        PSTClock.digitalFormat;
-    }
+      digitals.forEach((digital) => {
+        const newDigital = 
+      })
 
-    if (clock.dataset.timezone === "MDT") {
-      const MDTClock = new TimeZone(-6, "MDTTime");
-      document.querySelector("#MDTDigitalFormat").innerText =
-        MDTClock.digitalFormat;
-    }
+      document.querySelector('[data-digital]').innerText =
+        newClock.digitalFormat;
+      console.log(`digitalFormat`, newClock.digitalFormat);
+    })
+
+    // for (const obj in objects) {
+    //   console.log(`obj`, obj.offset.value);
+    //   const newClock = new TimeZone(obj.offset, TIMEZONE_ABBR);
+
+    //   console.log(`newClock`, newClock);
+    //   document.querySelector('clock.dataset.digital').innerText =
+    //     newClock.digitalFormat;
+    // }
+
+    // // console.log(`clock is`, clock);
+    // if (clock.dataset.timezone === "UTC") {
+    //   const UTCClock = new TimeZone(0, "UTCTime");
+    //   document.querySelector("#UCTDigitalFormat").innerText =
+    //     UTCClock.digitalFormat;
+    // }
+
+    // if (clock.dataset.timezone === "JST") {
+    //   const JSTClock = new TimeZone(9, "JSTTime");
+    //   console.log(JSTClock);
+    //   document.querySelector("#JSTDigitalFormat").innerText =
+    //     JSTClock.digitalFormat;
+    // }
+
+    // if (clock.dataset.timezone === "EST") {
+    //   const ESTClock = new TimeZone(-5, "ESTTime");
+    //   document.querySelector("#ESTDigitalFormat").innerText =
+    //     ESTClock.digitalFormat;
+    // }
+
+    // if (clock.dataset.timezone === "HST") {
+    //   const HSTClock = new TimeZone(-10, "HSTTime");
+    //   document.querySelector("#HSTDigitalFormat").innerText =
+    //     HSTClock.digitalFormat;
+    // }
+
+    // if (clock.dataset.timezone === "AKDT") {
+    //   const AKDTClock = new TimeZone(-8, "AKDTTime");
+    //   document.querySelector("#AKDTDigitalFormat").innerText =
+    //     AKDTClock.digitalFormat;
+    // }
+
+    // if (clock.dataset.timezone === "PST") {
+    //   const PSTClock = new TimeZone(-7, "PSTTime");
+    //   document.querySelector("#PSTDigitalFormat").innerText =
+    //     PSTClock.digitalFormat;
+    // }
+
+    // if (clock.dataset.timezone === "MDT") {
+    //   const MDTClock = new TimeZone(-6, "MDTTime");
+    //   document.querySelector("#MDTDigitalFormat").innerText =
+    //     MDTClock.digitalFormat;
+    // }
   });
 }
 
-setInterval(setDate, 1000);
+setDate();
+// setInterval(setDate, 1000);
