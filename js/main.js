@@ -2,7 +2,7 @@ console.log("connected to javascript");
 
 const clocks = document.querySelectorAll(".clock");
 
-console.log(`Hello Diss`);
+console.log(`Hello Tea`);
 
 function TimeZone(UTCoffset, clockType) {
   this.UTCoffset = UTCoffset;
@@ -18,8 +18,15 @@ function TimeZone(UTCoffset, clockType) {
   this.hours = Math.abs(this.date.getUTCHours() + this.UTCoffset);
   // console.log(`timezone hours`, this.hours);
 
+  //force clocks into correct formatting
   if (this.hours > 23) {
     this.hours -= 23;
+  }
+  if (this.minutes < 10) {
+    this.minutes = "0" + this.minutes;
+  }
+  if (this.seconds < 10) {
+    this.seconds = "0" + this.seconds;
   }
 
   // DIGITAL FORMAT
