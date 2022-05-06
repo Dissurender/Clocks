@@ -1,5 +1,8 @@
 console.log("connected to javascript")
 
+const clocks = document.querySelectorAll('.clock');
+
+
 function TimeZone(UTCoffset, clockType) {
     this.UTCoffset = UTCoffset;
     this.clockType = clockType;
@@ -13,10 +16,6 @@ function TimeZone(UTCoffset, clockType) {
     // console.log(`timezone minutes`, this.minutes);
     this.hours = this.date.getUTCHours() + this.UTCoffset;
     // console.log(`timezone hours`, this.hours);
-
-    this.resetHours = function () {
-
-    }
 
     if(this.hours > 24) {
         this.hours -= 24;
@@ -64,7 +63,6 @@ function TimeZone(UTCoffset, clockType) {
  }
 
 function setDate() {
-    const clocks = document.querySelectorAll('.clock');
     clocks.forEach(clock => {
         // console.log(`clock is`, clock);
         if (clock.dataset.timezone === 'UTC') {
